@@ -7,7 +7,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy(name: MyAllowSpecificOrigins,
         policy =>
         {
-            policy.WithOrigins("http://localhost:3000")  // React Dev Server
+            policy.WithOrigins("https://yellow-meadow-00395d903.6.azurestaticapps.net")  // React Dev Server
                 .AllowAnyHeader()
                 .AllowAnyMethod();
         });
