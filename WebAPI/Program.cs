@@ -9,7 +9,9 @@ builder.Services.AddCors(options =>
         {
             policy.WithOrigins("https://yellow-meadow-00395d903.6.azurestaticapps.net")  // React Dev Server
                 .AllowAnyHeader()
-                .AllowAnyMethod();
+                .AllowAnyMethod()
+                .AllowCredentials()
+                .SetIsOriginAllowed(origin => true);
         });
 });
 
