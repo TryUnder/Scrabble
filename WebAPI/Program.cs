@@ -30,3 +30,5 @@ app.UseAuthorization();
 app.MapControllers(); // Mapowanie kontrolerów
 
 app.Run();
+
+//test
