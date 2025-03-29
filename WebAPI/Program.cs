@@ -20,6 +20,11 @@ builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
+if (app.Environment.IsDevelopment())
+{
+
+}
+
 app.UseCors(MyAllowSpecificOrigins);
 app.UseAuthorization();
 app.MapControllers(); // Mapowanie kontrolerów
