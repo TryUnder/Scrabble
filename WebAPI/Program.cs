@@ -20,7 +20,7 @@ var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
     builder.Services
         .AddApplication()
-        .AddInfrastructure();
+        .AddInfrastructure(builder.Configuration);
 
     builder.Services.AddControllers();  // Dodaj obs³ugê kontrolerów
     builder.Services.AddAuthorization();
