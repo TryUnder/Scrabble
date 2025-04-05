@@ -9,6 +9,7 @@ using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;
 using Scrabble.Application.Common.Interfaces.Services;
 using Microsoft.Extensions.Options;
+using Scrabble.Domain.Entities;
 
 namespace Scrabble.Infrastructure.Authentication
 {
@@ -24,7 +25,7 @@ namespace Scrabble.Infrastructure.Authentication
             _jwtSettings = jwtOptions.Value;
         }
 
-        public string GenerateToken(Guid userId, string login)
+        public string GenerateToken(User user)
         {   
 
             var signingCredentials = new SigningCredentials(
@@ -33,8 +34,8 @@ namespace Scrabble.Infrastructure.Authentication
 
             var claims = new[]
             {
-                new Claim(JwtRegisteredClaimNames.Sub, userId.ToString()),
-                new Claim(JwtRegisteredClaimNames.GivenName, login.ToString()),
+                new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
+                new Claim(JwtRegisteredClaimNames.GivenName, user.Login),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
 

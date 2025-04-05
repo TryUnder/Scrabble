@@ -24,9 +24,9 @@ namespace WebAPI.Controllers
                 registerRequest.Password);
 
             var response = new AuthenticationResponse(
-                authResult.Id,
-                authResult.Login,
-                authResult.Email,
+                authResult.user.Id,
+                authResult.user.Login,
+                authResult.user.Email,
                 authResult.Token);
 
             return Ok(response);
@@ -39,9 +39,9 @@ namespace WebAPI.Controllers
                 loginRequest.Password);
 
             var response = new AuthenticationResponse(
-                authResult.Id,
-                authResult.Login,
-                authResult.Email,
+                authResult.user.Id,
+                authResult.user.Login,
+                authResult.user.Email,
                 authResult.Token);
 
             return Ok(response);

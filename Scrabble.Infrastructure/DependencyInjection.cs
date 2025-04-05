@@ -1,8 +1,10 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Scrabble.Application.Common.Interfaces.Authentication;
+using Scrabble.Application.Common.Interfaces.Persistence;
 using Scrabble.Application.Common.Interfaces.Services;
 using Scrabble.Infrastructure.Authentication;
+using Scrabble.Infrastructure.Persistence;
 using Scrabble.Infrastructure.Services;
 using System;
 using System.Collections.Generic;
@@ -20,6 +22,8 @@ namespace Scrabble.Infrastructure
             services.Configure<JwtSettings>(configuration.GetSection(JwtSettings.SectionName));
             services.AddSingleton<IJwtTokenGenerator, JwtTokenGenerator>();
             services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
+
+            services.AddScoped<IUserRepository, UserRepository>();
             return services;
         }
     }

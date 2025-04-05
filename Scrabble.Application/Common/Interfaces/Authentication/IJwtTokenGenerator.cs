@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Scrabble.Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,6 @@ namespace Scrabble.Application.Common.Interfaces.Authentication
 {
     public interface IJwtTokenGenerator
     {
-        string GenerateToken(Guid userId, string login);
+        string GenerateToken(User user);
     }
 }
