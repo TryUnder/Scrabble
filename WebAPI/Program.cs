@@ -1,5 +1,7 @@
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Scrabble.Application;
 using Scrabble.Infrastructure;
+using WebAPI.Common.Errors;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,6 +25,9 @@ var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
         .AddInfrastructure(builder.Configuration);
 
     builder.Services.AddControllers();  // Dodaj obs³ugê kontrolerów
+
+    builder.Services.AddSingleton<ProblemDetailsFactory, ScrabbleProblemDetailsFactory>();
+    
     builder.Services.AddAuthorization();
 }
 
@@ -34,6 +39,7 @@ if (app.Environment.IsDevelopment())
 }
 
 {
+    app.UseExceptionHandler("/error");
     app.UseCors(MyAllowSpecificOrigins);
     app.UseAuthorization();
     app.MapControllers(); // Mapowanie kontrolerów

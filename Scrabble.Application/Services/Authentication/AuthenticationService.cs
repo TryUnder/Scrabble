@@ -1,4 +1,5 @@
-﻿using Scrabble.Application.Common.Interfaces.Authentication;
+﻿using Scrabble.Application.Common.Errors;
+using Scrabble.Application.Common.Interfaces.Authentication;
 using Scrabble.Application.Common.Interfaces.Persistence;
 using Scrabble.Domain.Entities;
 using System;
@@ -25,7 +26,7 @@ namespace Scrabble.Application.Services.Authentication
         {
             if (_userRepository.GetUserByEmail(email) is not null)
             {
-                throw new Exception("User already exists");
+                throw new DuplicateEmailException();
             }
 
             var user = new User
